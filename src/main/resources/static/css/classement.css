@@ -1,0 +1,93 @@
+/* ============================================================
+   CLASSEMENT - Styles spécifiques
+   ============================================================ */
+
+/* Wrapper indispensable pour pousser le contenu à droite de la sidebar */
+.main-content-wrapper {
+    margin-left: 260px; /* Largeur exacte de la sidebar */
+    padding: 40px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* Centré horizontalement dans le wrapper */
+    padding: 30px;
+    background: var(--panel-bg);
+    color: var(--text-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--gold);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Section Filtres */
+.filter-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--btn-toggle-border);
+    background-color: rgba(0,0,0,0.2); /* Fond légèrement plus sombre */
+}
+
+/* On utilise les classes de show.css (.form-select), mais on ajuste ici si besoin */
+.filter-section label {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Tableau Leaderboard */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.leaderboard-table th {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--gold);
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid var(--gold);
+}
+
+.leaderboard-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.rank-1 { color: var(--gold); font-weight: bold; font-size: 1.2em; }
+.rank-2 { color: #bdc3c7; font-weight: bold; font-size: 1.1em; } /* Argent */
+.rank-3 { color: #cd7f32; font-weight: bold; font-size: 1.1em; } /* Bronze */
+
+.points-column {
+    font-weight: bold;
+    color: var(--gold);
+    text-align: right;
+}
+
+.nav-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.nav-links a,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:active {
+    color: white !important; /* Ou var(--text-color) */
+    text-decoration: none;
+}

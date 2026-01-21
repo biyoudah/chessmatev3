@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>♙ Chessmate - Page de connexion</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+
+<div class="page-login">
+
+    <div class="login-card">
+
+        <img th:src="@{/img/ChessMate.png}" alt="Logo ChessMate" class="logo-login">
+
+        <div class="login-container">
+
+            <h1>Connexion</h1>
+
+            <div th:if="${param.success}" class="message-validation">
+                <span>L'inscription a bien été prise en compte.</span>
+            </div>
+
+            <div th:if="${param.error}" class="message-erreur">
+                <span>Email ou mot de passe incorrect.</span>
+            </div>
+
+            <div th:if="${param.logout}" class="message-validation">
+                <span>Vous avez été déconnecté avec succès.</span>
+            </div>
+
+            <form th:action="@{/login}" method="post">
+
+                <div class="form-group">
+                    <label for="username">Email :</label>
+                    <input id="username" name="username" type="text"
+                           placeholder="exemple@mail.com" class="form-control" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input id="password" name="password" type="password"
+                           placeholder="********" class="form-control" required/>
+                </div>
+
+                <input type="hidden" name="targetUrl" th:if="${param.targetUrl}" th:value="${param.targetUrl}" />
+
+                <button type="submit">Se connecter</button>
+            </form>
+
+            <p class="register-text">
+                Pas encore de compte ?
+                <a th:href="@{/register}">Inscrivez-vous ici</a>.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

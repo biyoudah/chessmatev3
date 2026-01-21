@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>♙ Chessmate - Accueil</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" th:href="@{/css/home.css}">
+  <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+
+  <script defer th:src="@{/js/theme-manager.js}"></script>
+</head>
+
+<body>
+
+<aside class="sidebar">
+  <div class="logo">
+    <a th:href="@{/}" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+      <img th:src="@{/img/ChessMateDark.png}" alt="Chessmate">
+      <span>Chessmate</span>
+    </a>
+  </div>
+
+  <nav class="nav-menu">
+    <a href="/placement"><i class="fa fa-chess-board"></i> Placement</a>
+    <a href="/puzzle"><i class="fa fa-puzzle-piece"></i> Puzzle</a>
+    <a href="/infos"><i class="fa fa-info-circle"></i> Infos</a>
+    <a href="/classement"><i class="fa fa-user-friends"></i> Classement</a>
+    <a href="#" id="plus-link"><i class="fa fa-ellipsis-h"></i> Plus</a>
+    <a href="#" id="theme-toggle">
+      <i class="fa fa-sun" id="theme-icon"></i>
+      <span id="theme-text">Mode Clair</span>
+    </a>
+  </nav>
+
+  <div class="auth-section">
+    <div th:if="${isLoggedIn == false or pseudo == 'Invité'}" class="auth-buttons">
+      <a href="/register" style="text-decoration: none;">
+        <button class="sidebar-btn btn-primary">Créer un compte</button>
+      </a>
+      <a href="#" onclick="window.location.href='/login?targetUrl=' + window.location.pathname; return false;" style="text-decoration: none;">
+        <button class="sidebar-btn btn-secondary">Se connecter</button>
+      </a>
+    </div>
+
+    <div th:if="${isLoggedIn == true or (pseudo != null and pseudo != 'Invité')}" class="user-profile">
+      <p>Connecté en tant que</p>
+      <strong th:text="${pseudo}" style="color: #fff;">Joueur</strong>
+      <form th:action="@{/logout}" method="post" style="margin-top: 10px;">
+        <button type="submit" class="sidebar-btn btn-secondary" style="padding: 5px 10px; font-size: 0.8em;">
+          <i class="fa fa-sign-out-alt"></i> Déconnexion
+        </button>
+      </form>
+    </div>
+  </div>
+</aside>
+
+<main class="main-content">
+  <div class="dashboard-grid">
+
+    <div class="dashboard-main">
+      <header class="page-header">
+        <h1>Bienvenue, <span th:text="${pseudo}" class="highlight">Joueur</span> ! 👋</h1>
+      </header>
+
+      <section class="card">
+        <div class="card-header">
+          <h3><i class="fa fa-trophy"></i> Tournois en direct</h3>
+        </div>
+        <div class="card-body">
+          <div th:if="${not #lists.isEmpty(tournaments)}">
+            <div th:each="t : ${tournaments}" class="list-item tournament">
+              <div class="item-info">
+                <strong th:text="${t.fullName}">Nom du tournoi</strong>
+                <div class="item-meta">
+                  <span><i class="fa fa-users"></i> <span th:text="${t.nbPlayers}">0</span></span>
+                  <span><i class="fa fa-clock"></i> <span th:text="${t.minutes}">0</span> min</span>
+                </div>
+              </div>
+              <a th:href="'https://lichess.org/tournament/' + ${t.id}" target="_blank" class="action-link">Rejoindre</a>
+            </div>
+          </div>
+          <p th:if="${#lists.isEmpty(tournaments)}" class="empty-msg">Aucun tournoi majeur en cours.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h3><i class="fa fa-newspaper"></i> ChessMate News </h3>
+        </div>
+        <div class="card-body">
+          <div th:each="art : ${articles}" class="list-item article">
+            <img th:if="${art.image}" th:src="${art.image}" class="article-thumb" alt="News">
+            <div class="item-info">
+              <a th:href="${art.url}" target="_blank" class="article-title" th:text="${art.title}">Titre</a>
+              <p class="article-summary" th:text="${art.short}">Résumé...</p>
+            </div>
+          </div>
+          <p th:if="${#lists.isEmpty(articles)}" class="empty-msg">Aucune ChessNews...</p>
+        </div>
+      </section>
+    </div>
+
+    <aside class="dashboard-sidebar">
+      <div class="card news-widget">
+        <div class="card-header">
+          <h3><i class="fa fa-globe-europe"></i> Monde des Échecs</h3>
+        </div>
+        <div class="widget-body" id="chess-news-feed">
+          <div style="padding: 20px; text-align: center; color: var(--text-muted);">
+            <i class="fa fa-circle-notch fa-spin"></i> Chargement...
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<script th:src="@{/js/home.js}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+:root {
+    --main-bg: #f8fafc;
+    --accent-blue: #2766cd;
+    --accent-green: #22c55e;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    /* Tournois */
+    --tournament-bg: #eff6ff;
+
+    /* Icônes */
+    --icon-gold: #f59e0b;
+}
+
+body.dark-mode {
+    --main-bg: #0a0a0a;
+    --accent-blue: #4d94ff;
+    --accent-green: #34d975;
+    --text-dark: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --white: #1a1a1a;
+    --border-color: #333333;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
+
+    /* Tournois */
+    --tournament-bg: #1a2a3a;
+
+    /* Icônes */
+    --icon-gold: #ffd700;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-dark);
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.1s;
+}
+
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: #00a800; color: white; box-shadow: 0 2px 0 #006d00; font-size: 0.9rem;}
+.btn-primary:hover { background: #068d06;}
+.btn-secondary { background: #475569; color: white; box-shadow: 0 2px 0 #2f3946; font-size: 0.9rem;}
+.btn-secondary:hover { background: #404b5d;}
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.highlight {
+    color: var(--accent-blue);
+    transition: color 0.3s ease;
+}
+
+.page-header h1 {
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.card-header i {
+    color: var(--icon-gold);
+    transition: color 0.3s ease;
+}
+
+.card-body { padding: 0 24px; }
+
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.list-item:last-child { border-bottom: none; }
+
+.item-info {
+    flex: 1;
+}
+
+.item-info strong {
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.item-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+    display: flex;
+    gap: 15px;
+    transition: color 0.3s ease;
+}
+
+.action-link {
+    background: #eff6ff;
+    color: var(--accent-blue);
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .action-link {
+    background: #1a2a3a;
+}
+
+.action-link:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.article-thumb {
+    width: 110px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.article-title {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: color 0.2s ease;
+}
+
+.article-title:hover { color: var(--accent-blue); }
+
+.article-summary {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.empty-msg {
+    padding: 30px;
+    text-align: center;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.gorilla-container {
+    position: fixed;
+    right: -450px;
+    bottom: 30px;
+    width: 350px;
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.3);
+    z-index: 9999;
+    border: 3px solid #1e293b;
+    transition: right 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+}
+
+body.dark-mode .gorilla-container {
+    background: #1a1a1a;
+    border-color: #333;
+}
+
+.gorilla-container.show-gorilla {
+    right: 30px;
+}
+
+.Prankeur {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.gorilla-container p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #334155;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .gorilla-container p {
+    color: #e0e0e0;
+}
+
+.gorilla-container p span {
+    color: #3b82f6;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .gorilla-container p span {
+    color: #4d94ff;
+}
+
+/* Layout Grid */
+.main-content {
+    max-width: 1600px;
+    padding-right: 40px;
+}
+
+.dashboard-grid {
+    display: grid;
+    /* 1fr pour le contenu, 350px fixe pour le widget (comme demandé pour garder les barres) */
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+    align-items: start; /* Alignement par défaut en haut */
+}
+
+
+.dashboard-sidebar {
+    align-self: start;
+    margin-top: 82px;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .dashboard-sidebar {
+        display: none;
+    }
+}
+
+/* News Widget */
+.news-widget {
+    /* Plus besoin de sticky si c'est centré verticalement dans le flux */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.widget-body {
+    overflow-y: auto;
+    padding: 0;
+}
+
+.news-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-item:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+body.dark-mode .news-item:hover {
+    background-color: rgba(255,255,255,0.02);
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+}
+
+.news-source {
+    font-weight: 700;
+    color: var(--accent-green);
+    text-transform: uppercase;
+}
+
+.news-time {
+    color: var(--text-muted);
+}
+
+.news-link {
+    display: block;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+.news-link:hover {
+    color: var(--accent-blue);
+}
+

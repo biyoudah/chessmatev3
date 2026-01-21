@@ -1,0 +1,42 @@
+package fr.univlorraine.pierreludmannchessmate.model;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class FouTest {
+    @Test
+    void constructeurFouTest() {
+        Fou d = new Fou(true);
+        assertTrue(d.estBlanc());
+    }
+
+    @Test
+    void constructeurFouTest2() {
+        Fou d = new Fou(false);
+        assertFalse(d.estBlanc());
+    }
+
+    @Test
+    void dessinerTest() {
+        Fou d= new Fou(true);
+        assertEquals("\u2657",d.dessiner());
+    }
+
+    @Test
+    void dessinerTest2() {
+        Fou d = new Fou(false);
+        assertEquals("\u265D",d.dessiner());
+    }
+
+    @Test
+    void deplacementValideTest() {
+        Fou d = new Fou(false);
+        assertTrue(d.deplacementValide(0,0,1,1));
+    }
+
+    @Test
+    void deplacementValideTest2() {
+        Fou d = new Fou(false);
+        assertFalse(d.deplacementValide(0,0,1,2));
+    }
+}
