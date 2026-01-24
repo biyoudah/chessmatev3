@@ -41,7 +41,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/", "/home", "/classement", "/infos/**", "/show", "/placement/**", "/plus/**").permitAll()
 
-                        .requestMatchers("/login", "/register", "/error").permitAll()
+                        .requestMatchers("/login", "/register", "/error","/download/lite").permitAll()
 
                         .requestMatchers("/puzzle/admin/**").hasRole("ADMIN")
                         .requestMatchers("/puzzle/**").permitAll()

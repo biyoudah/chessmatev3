@@ -2,15 +2,20 @@ package fr.univlorraine.pierreludmannchessmate.controller;
 
 import fr.univlorraine.pierreludmannchessmate.model.Utilisateur;
 import fr.univlorraine.pierreludmannchessmate.repository.UtilisateurRepository;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Contrôleur pour la page ChessMate Desktop Lite.
- */
+import java.io.IOException;
+
 @Controller
 public class PlusController {
 
@@ -20,18 +25,26 @@ public class PlusController {
         this.utilisateurRepository = utilisateurRepository;
     }
 
-    /**
-     * Affiche la page "Plus" (Desktop Lite).
-     */
     @GetMapping("/plus")
     public String plus(Model model, Authentication auth) {
         injecterInfosUtilisateur(model, auth);
-        return "plus"; // Doit correspondre au nom de ton fichier plus.html
+        return "plus";
     }
 
     /**
-     * Méthode identique à ton InfoController pour garder la cohérence du pseudo
+     * Gère le téléchargement du fichier RAR
      */
+    @GetMapping("/download/lite")
+    @ResponseBody
+    public ResponseEntity<Resource> downloadLite() throws IOException {
+        Resource resource = new ClassPathResource("static/downloads/ChessMateDesktopLite.rar");
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/x-rar-compressed"))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"ChessMateDesktopLite.rar\"")
+                .body(resource);
+    }
+
     private void injecterInfosUtilisateur(Model model, Authentication authentication) {
         boolean isConnected = authentication != null
                 && authentication.isAuthenticated()
