@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>♙ Chessmate - Desktop Lite</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    <script defer th:src="@{/js/theme-manager.js}"></script>
+</head>
+
+<body>
+
+<aside class="sidebar">
+    <div class="logo">
+        <a th:href="@{/}" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+            <img th:src="@{/img/ChessMateDark.png}" alt="Chessmate">
+            <span>Chessmate</span>
+        </a>
+    </div>
+
+    <nav class="nav-menu">
+        <a href="/"><i class="fa fa-home"></i> Accueil</a>
+        <a href="/placement"><i class="fa fa-chess-board"></i> Placement</a>
+        <a href="/puzzle"><i class="fa fa-puzzle-piece"></i> Puzzle</a>
+        <a href="/infos"><i class="fa fa-info-circle"></i> Infos</a>
+        <a href="/classement"><i class="fa fa-user-friends"></i> Classement</a>
+        <a href="/plus" class="active"><i class="fa fa-ellipsis-h"></i> Plus</a>
+        <a href="#" id="theme-toggle">
+            <i class="fa fa-sun" id="theme-icon"></i>
+            <span id="theme-text">Mode Clair</span>
+        </a>
+    </nav>
+
+    <div class="auth-section">
+    </div>
+</aside>
+
+<main class="main-content">
+    <div class="dashboard-grid">
+
+        <div class="dashboard-main">
+            <header class="page-header">
+                <h1>ChessMate <span class="highlight">Desktop Lite</span></h1>
+                <p style="color: var(--text-muted); margin-top: 10px;">L'expérience ChessMate, partout, tout le temps. Même sans connexion.</p>
+            </header>
+
+            <section class="card" style="background: linear-gradient(135deg, var(--tournament-bg), var(--white));">
+                <div class="card-body" style="padding: 40px; text-align: center;">
+                    <i class="fa fa-download" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 20px;"></i>
+                    <h2 style="margin-bottom: 15px;">Prêt pour le hors-ligne ?</h2>
+                    <p style="max-width: 600px; margin: 0 auto 25px; color: var(--text-dark);">
+                        Téléchargez la version légère pour Windows.
+                        Profitez du moteur d'analyse et de vos entraînements sans consommer de données.
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a th:href="@{/downloads/ChessMateDesktopLite.rar}"
+                           download="ChessMateDesktopLite.rar"
+                           class="btn btn-primary">
+                            <i class="fab fa-windows"></i> Télécharger pour Windows
+                        </a>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">Version 1.0.0 - 45 Mo seulement</p>
+                </div>
+            </section>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <section class="card">
+                    <div class="card-header">
+                        <h3><i class="fa fa-bolt" style="color: #eab308;"></i> Performance</h3>
+                    </div>
+                    <div class="card-body" style="padding: 20px;">
+                        <p class="article-summary">Optimisé pour les anciens PC. Démarre en moins de 2 secondes. Pas de publicités, pas de trackers.</p>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h3><i class="fa fa-wifi-slash" style="color: var(--accent-green);"></i> Mode Offline</h3>
+                    </div>
+                    <div class="card-body" style="padding: 20px;">
+                        <p class="article-summary">Jouez contre l'ordinateur, révisez vos ouvertures et résolvez des puzzles pré-chargés sans internet.</p>
+                    </div>
+                </section>
+            </div>
+
+            <section class="card">
+                <div class="card-header">
+                    <h3><i class="fa fa-list-check"></i> Ce qui est inclus dans la version Lite</h3>
+                </div>
+                <div class="card-body">
+                    <div class="list-item">
+                        <div class="item-info">
+                            <strong>Mode placement et ses 4 problèmes phares</strong>
+                            <p class="item-meta">Pour votre plaisir à tout instant !</p>
+                        </div>
+                        <i class="fa fa-check-circle" style="color: var(--accent-green);"></i>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-info">
+                            <strong>Entraînement aux Puzzles</strong>
+                            <p class="item-meta">Une sélection de 10 puzzles téléchargés avec l'application !</p>
+                        </div>
+                        <i class="fa fa-check-circle" style="color: var(--accent-green);"></i>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-info">
+                            <strong>Possibilités de créer plusieurs profils</strong>
+                            <p class="item-meta">Enregistrez votre foyer et défiez-vous !</p>
+                        </div>
+                        <i class="fa fa-check-circle" style="color: var(--accent-green);"></i>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <aside class="dashboard-sidebar">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa fa-microchip"></i> Configuration</h3>
+                </div>
+                <div class="card-body" style="padding: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="font-size: 0.9rem; display: block;">RAM Minimale</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">512 Mo</span>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <strong style="font-size: 0.9rem; display: block;">Stockage</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">50 Mo d'espace libre</span>
+                    </div>
+                    <div>
+                        <strong style="font-size: 0.9rem; display: block;">Système</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Win 7+</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card" style="border-left: 4px solid var(--accent-blue);">
+                <div class="card-body" style="padding: 20px;">
+                    <p style="font-size: 0.9rem; font-weight: 600; margin: 0;">Besoin de plus ?</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Les parties en ligne et les tournois restent exclusifs à la version Web.</p>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</main>
+
+</body>
+</html>
