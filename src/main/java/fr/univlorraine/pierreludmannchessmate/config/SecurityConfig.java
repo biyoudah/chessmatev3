@@ -39,9 +39,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/css/**", "/js/**", "/img/**", "/webjars/**", "/favicon.ico", "/static/**").permitAll()
 
-                        .requestMatchers("/", "/home", "/classement", "/infos/**", "/show", "/placement/**", "/plus/**").permitAll()
+                        .requestMatchers("/", "/home", "/classement", "/infos/**", "/show", "/placement/**", "/plus/**","/download/lite").permitAll()
 
-                        .requestMatchers("/login", "/register", "/error","/download/lite").permitAll()
+                        .requestMatchers("/login", "/register", "/error").permitAll()
 
                         .requestMatchers("/puzzle/admin/**").hasRole("ADMIN")
                         .requestMatchers("/puzzle/**").permitAll()
